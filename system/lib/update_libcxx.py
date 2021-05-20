@@ -9,8 +9,9 @@ import sys
 import shutil
 
 script_dir = os.path.abspath(os.path.dirname(__file__))
-local_src = os.path.join(script_dir, 'libcxx')
-local_inc = os.path.join(os.path.dirname(script_dir), 'include', 'libcxx')
+local_root = os.path.join(script_dir, 'libcxx')
+local_src = os.path.join(local_root, 'src')
+local_inc = os.path.join(local_root, 'include')
 
 preserve_files = ('readme.txt', 'symbols')
 
@@ -38,8 +39,8 @@ def copy_tree(upstream_dir, local_dir):
 def main():
   llvm_dir = os.path.abspath(sys.argv[1])
   libcxx_dir  = os.path.join(llvm_dir, 'libcxx')
-  upstream_inc = os.path.join(libcxx_dir, 'include')
   upstream_src = os.path.join(libcxx_dir, 'src')
+  upstream_inc = os.path.join(libcxx_dir, 'include')
   assert os.path.exists(upstream_inc)
   assert os.path.exists(upstream_src)
 
@@ -47,11 +48,11 @@ def main():
   clean_dir(local_src)
   clean_dir(local_inc)
 
-  copy_tree(upstream_inc, local_inc)
   copy_tree(upstream_src, local_src)
+  copy_tree(upstream_inc, local_inc)
 
-  shutil.copy2(os.path.join(libcxx_dir, 'CREDITS.TXT'), local_src)
-  shutil.copy2(os.path.join(libcxx_dir, 'LICENSE.TXT'), local_src)
+  shutil.copy2(os.path.join(libcxx_dir, 'CREDITS.TXT'), local_root)
+  shutil.copy2(os.path.join(libcxx_dir, 'LICENSE.TXT'), local_root)
 
 
 if __name__ == '__main__':
