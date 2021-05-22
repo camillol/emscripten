@@ -1,4 +1,4 @@
-These files are from libc++, release branch 10.x.
+These files are from llvm-project/libcxx, release branch 10.x.
 
 tag: llvmorg-10.0.0
 git: d32170dbd5b0d54436537b6b75beaf44324e0c28
@@ -11,12 +11,8 @@ Run `system/lib/update_libcxx.py path/to/llvm-project`
 Local Modification
 ------------------
 
-Local modifications are marked with the comment: 'XXX EMSCRIPTEN'
+The differences from upstream libc++ are stored in our fork of llvm.  The
+changes from upstream can seen by comparing the `llvmorg-10.0.0` and
+emscripten-libs-10.0.0` branches:
 
-1. Define _LIBCPP_HAS_THREAD_API_PTHREAD in libcxx/__config./
-
-2. Define _LIBCPP_ELAST in libcxx/include/config_elast.h
-
-3. Set init_priority of __start_std_streams in libcxx/iostream.cpp
-
-4. Use _LIBCPP_USING_GETENTROPY (like wasi)
+https://github.com/llvm/llvm-project/compare/llvmorg-10.0.0...emscripten-core:emscripten-libs-10.0.0

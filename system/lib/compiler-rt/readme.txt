@@ -14,4 +14,8 @@ Run `system/lib/update_compiler_rt.py path/to/llvm-root`
 Local Change
 ------------
 
-lib/builtins/powitf2.c: enable for wasm as well as PPC
+The differences from upstream compiler-rt are stored in our fork of llvm.  The
+changes from upstream can seen by comparing the `llvmorg-10.0.0` and
+emscripten-libs-10.0.0` branches:
+
+https://github.com/llvm/llvm-project/compare/llvmorg-10.0.0...emscripten-core:emscripten-libs-10.0.0
